@@ -45,7 +45,7 @@ const Blog = () => {
 
   return (
     <>
-     <form className="max-w-sm mx-auto">
+     <form className="max-w-sm">
         <div className="mb-5">
           <label
             htmlFor="username"

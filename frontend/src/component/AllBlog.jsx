@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 const AllBlog = () => {
+  useEffect(() => {
+  async function getAllUser(url) {
+   const allBlog = await axios.get ("http://localhost:4000/createblog/");
+   console.log(allBlog);
+   
+   }
+   getAllUser
+  }, []);
   return (
-    <ul class="max-w-md divide-y divide-gray-200 bg-red-100 h-(80vh) p-10 overflow-y-scroll  ">
+    <ul class="max-w-md divide-y divide-gray-200 bg-red-100 h-(80vh) p-10 overflow-y-scroll shadow-xl  ">
       <li class="py-10">
         <div class="flex  flex-col items-start">
           <div class="flex-1 min-w-0">

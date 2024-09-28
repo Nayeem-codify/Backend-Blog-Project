@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-const Blog = () => {
+const Blog = (realtime) => {
   const [bloginput, setbloginput] = useState({
     username: "",
     email: "",
@@ -19,25 +19,18 @@ const Blog = () => {
 
   //HandleBlogPost//
   const handleBlogPost = async () => {
-    console.log(bloginput);
-    
     try {
       const { username, email, blog, password } = bloginput;
       if ((!username || !email, !blog, !password)) {
         return;
       }
-      await axios.post(
-        "http://localhost:4000/createblog",
-        {
-          userName: username,
-          email: email,
-          password: password,
-          blog: blog,
-        },
-        {
-          "Content-Type": "application/json",
-        }
-      );
+      await axios.post("http://localhost:4000/createblog", {
+        userName: username,
+        email: email,
+        password: password,
+        blog: blog,
+      });
+      realtime();
     } catch (error) {
       console.log(error);
     }
@@ -45,7 +38,7 @@ const Blog = () => {
 
   return (
     <>
-     <form className="max-w-sm">
+      <form className="max-w-sm">
         <div className="mb-5">
           <label
             htmlFor="username"
@@ -120,7 +113,7 @@ const Blog = () => {
         >
           Submit Blog
         </button>
-        </form>
+      </form>
     </>
   );
 };
